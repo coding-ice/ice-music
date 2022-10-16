@@ -1,0 +1,26 @@
+function formatTime(time) {
+  var min = Math.floor(time / 60)
+  var sec = time % 60
+
+  return leftPadZero(min) + '/' + leftPadZero(sec)
+}
+
+function leftPadZero(num) {
+  num = num + ""
+  return ("00" + num).slice(num.length)
+}
+
+function formatCount(num) {
+  if (num > 100000000) {
+    return (num / 100000000).toFixed(1) + '亿'
+  } else if (num > 10000) {
+    return (num / 10000).toFixed(1) + '万'
+  } else {
+    return num
+  }
+}
+
+module.exports = {
+  formatTime: formatTime,
+  formatCount: formatCount
+}
