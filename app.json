@@ -1,12 +1,13 @@
 {
   "pages": [
-    "pages/home-video/home-video",
     "pages/home-music/home-music",
-    "pages/detail-video/detail-video"
+    "pages/home-video/home-video",
+    "pages/detail-video/detail-video",
+    "pages/song-search/song-search"
   ],
   "window": {
     "backgroundTextStyle": "dark",
-    "navigationBarBackgroundColor": "#fff",
+    "navigationBarBackgroundColor": "#fafafa",
     "navigationBarTitleText": "IceMusic",
     "navigationBarTextStyle": "black"
   },

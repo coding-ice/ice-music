@@ -1,3 +1,6 @@
 image {
   vertical-align: top;
 }
+page {
+  background: #fafafa;
+}
