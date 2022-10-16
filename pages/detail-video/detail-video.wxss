@@ -1,0 +1,33 @@
+page {
+  height: 100vh;
+  box-sizing: border-box;
+}
+.video {
+  width: 100%;
+  vertical-align: middle;
+}
+.detail-content {
+  box-sizing: border-box;
+  height: calc(100% - 225px);
+  padding: 20rpx 30rpx;
+  padding-right: 0;
+}
+.detail-tit {
+  display: flex;
+  gap: 10rpx;
+  flex-direction: column;
+  margin-bottom: 70rpx;
+}
+.detail-tit .tit {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+.detail-tit .info,
+.detail-tit .play-info {
+  font-size: 28rpx;
+  color: gray;
+}
+.recommend .recom-tit {
+  font-size: 36rpx;
+  margin-bottom: 10rpx;
+}

@@ -10,8 +10,8 @@
       "list": [
         {
           "name": "视频详情",
-          "pathName": "pages/video-detail/video-detail",
-          "query": "id=14553401",
+          "pathName": "pages/detail-video/detail-video",
+          "query": "id=14567323",
           "launchMode": "default",
           "scene": null
         }

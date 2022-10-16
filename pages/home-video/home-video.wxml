@@ -1,5 +1,5 @@
 <view class="video-list">
-  <block wx:for="{{topMvList}}" wx:key="name">
+  <block wx:for="{{topMvList}}" wx:key="id">
     <video-item class="item" videoItem="{{item}}"></video-item>
   </block>
 </view>

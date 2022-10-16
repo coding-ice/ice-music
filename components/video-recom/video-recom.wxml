@@ -1,0 +1,9 @@
+<view class="video-recom-item">
+  <view class="video-item-left">
+    <image class="cover" mode="widthFix" src="{{videoItem.coverUrl}}"></image>
+  </view>
+  <view class="video-item-right">
+    <view class="tit">{{videoItem.title}}</view>
+    <view class="userName">{{videoItem.creator[0].userName}}</view>
+  </view>
+</view>

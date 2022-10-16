@@ -19,8 +19,28 @@ function getMvVideo(id) {
   })
 }
 
+function getMvInfo(mvid) {
+  return iceRequest.get({
+    url: '/mv/detail',
+    data: {
+      mvid
+    }
+  })
+}
+
+function getMvRelatedVideo(id) {
+  return iceRequest.get({
+    url: '/related/allvideo',
+    data: {
+      id
+    }
+  })
+}
+
 
 export {
   getTopMv,
-  getMvVideo
+  getMvVideo,
+  getMvInfo,
+  getMvRelatedVideo
 }

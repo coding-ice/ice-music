@@ -21,7 +21,7 @@ class IceRequest {
       })
     })
   }
-
+ 
   get(options) {
     return this.request({...options, method: "get"})
   }

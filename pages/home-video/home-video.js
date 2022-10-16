@@ -8,7 +8,8 @@ Page({
     hasMore: true
   },
   onLoad() {
-    this.getTopMvAction(this.data.limit, this.data.offset)
+    const {limit, offset} = this.data
+    this.getTopMvAction(limit, offset)
   },
 
   async onPullDownRefresh() {
@@ -16,14 +17,16 @@ Page({
     this.data.offset = 0
     this.data.topMvList = []
 
-    await this.getTopMvAction(this.data.limit, this.data.offset)
+    const {limit, offset} = this.data
+
+    await this.getTopMvAction(limit, offset)
     wx.stopPullDownRefresh()
   },
   onReachBottom() {
-    const {hasMore} = this.data
+    const {hasMore, limit, offset} = this.data
 
     if(hasMore) {
-      this.getTopMvAction(this.data.limit, this.data.offset)
+      this.getTopMvAction(limit, offset)
     }
   },
 

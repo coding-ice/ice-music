@@ -1,0 +1,38 @@
+.video-recom-item {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  overflow: hidden;
+  margin-bottom: 26rpx;
+}
+
+.video-item-left {
+  width: 40%;
+}
+.video-item-left .cover {
+  width: 100%;
+  border-radius: 12rpx;
+}
+
+.video-item-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 56%;
+  padding-right: 10rpx;
+}
+
+.video-item-right .tit {
+  font-size: 28rpx;
+  margin-bottom: 6rpx;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.video-item-right .userName {
+  font-size: 26rpx;
+  color: gray;
+}

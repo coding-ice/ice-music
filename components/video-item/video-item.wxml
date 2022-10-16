@@ -1,4 +1,4 @@
-<wxs src="/utils/formatTime.wxs" module="fmt"></wxs>
+<wxs src="/utils/format.wxs" module="fmt"></wxs>
 <view class="video-item" bindtap="onVideoItemTap">
   <view class="video-top">
     <image class="cover" mode="widthFix" src="{{videoItem.cover}}"></image>
