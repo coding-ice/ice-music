@@ -6,11 +6,16 @@ class IceRequest {
   request(options) {
     const {url} = options
     return new Promise((resolve, reject) => {
+      wx.showLoading({
+        title: '玩命加载中...',
+        mask: true
+      })
       wx.request({
         ...options,
         url: this.baseUrl + url,
         success: (res) => {
           resolve(res.data)
+          wx.hideLoading()
         },
         fail: reject
       })
@@ -26,4 +31,4 @@ class IceRequest {
   }
 }
 
-export const iceRequest = new IceRequest('http://codercba.com:1888/api')
+export const iceRequest = new IceRequest('http://codercba.com:9002')

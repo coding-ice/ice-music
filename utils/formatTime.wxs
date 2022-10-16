@@ -1,8 +1,9 @@
 function formatTime(time) {
+  time = time / 1000
   var min = Math.floor(time / 60)
   var sec = time % 60
 
-  return leftPadZero(min) + '/' + leftPadZero(sec)
+  return leftPadZero(min) + ':' + leftPadZero(sec)
 }
 
 function leftPadZero(num) {

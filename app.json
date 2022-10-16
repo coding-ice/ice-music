@@ -1,12 +1,13 @@
 {
   "pages": [
     "pages/home-video/home-video",
-    "pages/home-music/home-music"
+    "pages/home-music/home-music",
+    "pages/video-detail/video-detail"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "Weixin",
+    "navigationBarTitleText": "IceMusic",
     "navigationBarTextStyle": "black"
   },
   "tabBar": {

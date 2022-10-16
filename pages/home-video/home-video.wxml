@@ -1,2 +1,5 @@
-<!--pages/home-video/home-video.wxml-->
-<text>pages/home-video/home-video.wxml</text>
+<view class="video-list">
+  <block wx:for="{{topMvList}}" wx:key="name">
+    <video-item class="item" videoItem="{{item}}"></video-item>
+  </block>
+</view>

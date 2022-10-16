@@ -1,66 +1,38 @@
-// pages/home-video/home-video.js
+import {getTopMv} from '../../service/video.js'
+
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
-
+    topMvList: [],
+    limit: 20,
+    offset: 0,
+    hasMore: true
+  },
+  onLoad() {
+    this.getTopMvAction(this.data.limit, this.data.offset)
   },
 
-  /**
-   * 生命周期函数--监听页面加载
-   */
-  onLoad(options) {
+  async onPullDownRefresh() {
+    this.data.hasMore = true
+    this.data.offset = 0
+    this.data.topMvList = []
 
+    await this.getTopMvAction(this.data.limit, this.data.offset)
+    wx.stopPullDownRefresh()
   },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面隐藏
-   */
-  onHide() {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面卸载
-   */
-  onUnload() {
-
-  },
-
-  /**
-   * 页面相关事件处理函数--监听用户下拉动作
-   */
-  onPullDownRefresh() {
-
-  },
-
-  /**
-   * 页面上拉触底事件的处理函数
-   */
   onReachBottom() {
+    const {hasMore} = this.data
 
+    if(hasMore) {
+      this.getTopMvAction(this.data.limit, this.data.offset)
+    }
   },
 
-  /**
-   * 用户点击右上角分享
-   */
-  onShareAppMessage() {
-
+  //请求数据的Action
+  async getTopMvAction(limit, offset) {
+    const res = await getTopMv(limit, offset)
+    const newTopMvList = [...this.data.topMvList, ...res.data]
+    this.setData({topMvList: newTopMvList})
+    this.data.offset = this.data.topMvList.length
+    this.data.hasMore = res.hasMore
   }
 })

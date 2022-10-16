@@ -1,0 +1,15 @@
+<wxs src="/utils/formatTime.wxs" module="fmt"></wxs>
+<view class="video-item" bindtap="onVideoItemTap">
+  <view class="video-top">
+    <image class="cover" mode="widthFix" src="{{videoItem.cover}}"></image>
+    <view class="info">
+      <view class="play-count">
+        {{fmt.formatCount(videoItem.playCount)}}
+      </view>
+      <view class="look">
+        {{fmt.formatTime(videoItem.mv.videos[0].duration)}}
+      </view>
+    </view>
+  </view>
+  <text class="desc">{{videoItem.name}} - {{videoItem.artistName}} </text>
+</view>
