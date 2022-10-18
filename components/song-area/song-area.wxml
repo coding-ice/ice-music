@@ -1,0 +1,10 @@
+<view class="song-area">
+  <area-header title="{{title}}" bind:handleClick="onHandleClick"/>
+  <scroll-view scroll-x>
+    <view class="song-list">
+      <block wx:for="{{songList}}" wx:key="id">
+        <song-item class="song-item" songItem="{{item}}"></song-item>
+      </block>
+    </view>
+  </scroll-view >
+</view>

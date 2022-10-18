@@ -37,7 +37,11 @@
 }
 
 .video-item .desc {
-  display: block;
+  display: -webkit-box;
   margin: 20rpx 0; 
   font-size: 28rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
 }

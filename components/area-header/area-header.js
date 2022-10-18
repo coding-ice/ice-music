@@ -10,4 +10,9 @@ Component({
       value: true
     }
   },
+  methods: {
+    moreHandleClick() {
+      this.triggerEvent("handleClick")
+    }
+  }
 })

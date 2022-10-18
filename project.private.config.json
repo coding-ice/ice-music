@@ -14,6 +14,13 @@
           "query": "id=14567323",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "菜单详情",
+          "pathName": "pages/detail-menu/detail-menu",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

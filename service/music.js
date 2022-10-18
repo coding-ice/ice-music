@@ -6,7 +6,25 @@ function getBannerList() {
   })
 }
 
+function getSongList(cat, limit) {
+  return iceRequest.get({
+    url: '/top/playlist',
+    data: {
+      cat,
+      limit
+    }
+  })
+}
+
+function getAllTag() {
+  return iceRequest.get({
+    url: '/playlist/hot'
+  })
+}
+
 
 export {
-  getBannerList
+  getBannerList,
+  getSongList,
+  getAllTag
 }

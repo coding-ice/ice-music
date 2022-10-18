@@ -1,0 +1,8 @@
+<wxs module="fmt" src="../../utils/format.wxs"></wxs>
+<view class="song-item">
+  <view class="song-top">
+    <image class="cover" mode="widthFix" src="{{songItem.coverImgUrl}}"></image>
+    <text class="count">{{fmt.formatCount(songItem.playCount)}}</text>
+  </view>
+  <view class="song-dec">{{songItem.name}}</view>
+</view>

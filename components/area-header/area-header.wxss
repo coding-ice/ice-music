@@ -5,7 +5,7 @@
   align-items: center;
 }
 .area-header .tit {
-  font-size: 38rpx;
+  font-size: 36rpx;
   color: #333;
   font-weight: 700;
 }

@@ -2,7 +2,7 @@
   <view class="tit">
     {{title}}
   </view>
-  <view wx:if="{{hasMore}}" class="more">
+  <view wx:if="{{hasMore}}" class="more" bindtap="moreHandleClick">
     更多
     <van-icon name="arrow" />
   </view>

@@ -1,0 +1,14 @@
+.detail-menu {
+  padding: 0 26rpx;
+}
+
+.detail-menu-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.song-item {
+  width: 48%;
+}
+

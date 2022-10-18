@@ -1,5 +1,5 @@
 <wxs src="../../utils/format.wxs" module="fmt"></wxs>
-<video class="video"  src="{{mvUrl}}"  referrer-policy="origin"></video>
+<video class="video" autoplay src="{{mvUrl}}"  referrer-policy="origin"></video>
 
 <scroll-view class="detail-content" scroll-y show-scrollbar="{{false}}" enhanced>
   <view class="detail-tit">

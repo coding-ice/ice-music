@@ -1,0 +1,32 @@
+.song-item {
+  width: 100%;
+}
+.song-item .song-top {
+  position: relative;
+}
+
+.song-item .song-top .count {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 24rpx;
+  background: rgba(0, 0, 0, .3);
+  color: white;
+  border-radius: 10rpx;
+  padding: 2rpx;
+}
+
+.song-item .cover {
+  width: 100%;
+  border-radius: 10rpx;
+}
+
+.song-item .song-dec {
+  margin: 8rpx 0;
+  font-size: 24rpx;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+} 

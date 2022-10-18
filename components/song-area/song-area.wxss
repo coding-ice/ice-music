@@ -1,0 +1,10 @@
+.song-list {
+  display: flex;
+  width: 100%;
+}
+
+.song-item {
+  flex-shrink: 0;
+  width: 220rpx;
+  margin-right: 15rpx;
+}

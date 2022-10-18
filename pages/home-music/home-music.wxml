@@ -17,5 +17,5 @@
   </block>
 </swiper>
 
-<area-header title="热门歌单"/>
-<area-header title="推荐歌单" hasMore="{{false}}"/>
+<song-area title="热门歌单" songList="{{hotSongList}}"></song-area>
+<song-area title="推荐歌单" songList="{{recomList}}"></song-area>
