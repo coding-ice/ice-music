@@ -1,0 +1,10 @@
+<view class="song-info">
+  <text class="idx">{{index}}</text>
+  <view class="song-des">
+    <text class="name">{{itemData.name}}</text>
+    <view class="author">
+      <image mode="widthFix" class="sq" src="/assets/images/icons/sq_icon.png" />
+    {{itemData.ar[0].name}}
+    </view>
+  </view>
+</view>

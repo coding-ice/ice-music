@@ -18,7 +18,10 @@ Page({
     this.getRecomListAction()
 
     // 推荐歌曲 监听数据及派发
-    recomSongStore.onState("recomSongList", val => this.setData({songs: val.slice(0,6)}))
+    recomSongStore.onState("recomSongList", val => {
+      if (!(Object.keys(val).length)) return
+      this.setData({songs: val.tracks.slice(0,6)})
+    })
     recomSongStore.dispatch('getSongRankListAction')
 
     // 巅峰榜 监听数据及派发
@@ -45,7 +48,7 @@ Page({
 
   onRecomHandleClick() {
     wx.navigateTo({
-      url: '/pages/song-list/song-list',
+      url: '/pages/song-list/song-list?type=recomSongList',
     })
   },
 

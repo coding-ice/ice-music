@@ -3,12 +3,12 @@ import {getSongRankList} from '../service/music.js'
 
 export const recomSongStore = new HYEventStore({
   state: {
-    recomSongList: []
+    recomSongList: {}
   },
   actions: {
     async getSongRankListAction(ctx) {
       const res = await getSongRankList()
-      ctx.recomSongList = res.playlist.tracks
+      ctx.recomSongList = res.playlist
     }
   }
 })

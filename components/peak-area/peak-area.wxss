@@ -32,6 +32,7 @@
 
 .peak-area .peak-item .peak-right .cover {
   width: 200rpx;
+  height: 200rpx;
 }
 
 .peak-area .peak-item .peak-right .count {

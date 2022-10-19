@@ -1,0 +1,32 @@
+.song-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.song-info .idx {
+  padding-right: 25rpx;
+}
+
+.song-des {
+  display: flex;
+  flex-direction: column;
+}
+
+.song-des .name {
+  font-size: 32rpx;
+  margin-bottom: 8rpx;
+}
+
+.song-des .author {
+  display: flex;
+  align-items: center;
+  font-size: 24rpx;
+  color: #999;
+}
+
+.song-des .author .sq {
+  width: 38rpx;
+  height: 22rpx;
+  margin-right: 10rpx;
+}
