@@ -7,6 +7,11 @@
   resolved "https://registry.npmmirror.com/@vant/weapp/-/weapp-1.10.5.tgz#c34d97e20ebb8f763b133db557551e6f768d3137"
   integrity sha512-bAHp9r0ZiRsOqPOLzQHI/ZvkAlXzol1/TFhM70MyghuxkzJTjcDUd8RIfLkCN3c1MCK/PfBGw2an8/afygftCg==
 
+hy-event-store@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.npmmirror.com/hy-event-store/-/hy-event-store-1.2.1.tgz#542c4f30107a7c986485545d32098d1339fb1a62"
+  integrity sha512-viMS7Zj1VmFgkAENrJr0lMV29FWzaSgLg1gTcZ+WJXuPO+SOhehWqALoJIDGms02qG+tO+++VsPkgD0rXlAikA==
+
 underscore@^1.13.6:
   version "1.13.6"
   resolved "https://registry.npmmirror.com/underscore/-/underscore-1.13.6.tgz#04786a1f589dc6c09f761fc5f45b89e935136441"

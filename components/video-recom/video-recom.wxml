@@ -1,5 +1,5 @@
 <view class="video-recom-item">
-  <view class="video-item-left">
+  <view class="video-item-left" style="width: {{isBig ? '40%' : '110rpx'}}">
     <image class="cover" mode="widthFix" src="{{videoItem.coverUrl}}"></image>
   </view>
   <view class="video-item-right">

@@ -22,9 +22,18 @@ function getAllTag() {
   })
 }
 
+function getRecomSongList(id = 3778678) {
+  return iceRequest.get({
+    url: '/playlist/detail',
+    data: {
+      id
+    }
+  })
+}
 
 export {
   getBannerList,
   getSongList,
-  getAllTag
+  getAllTag,
+  getRecomSongList
 }

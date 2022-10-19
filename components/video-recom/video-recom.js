@@ -7,6 +7,10 @@ Component({
     videoItem: {
       type: Object,
       value: {}
+    },
+    isBig: {
+      type: Boolean,
+      value: false
     }
   },
 
@@ -14,7 +18,6 @@ Component({
    * 组件的初始数据
    */
   data: {
-
   },
 
   /**

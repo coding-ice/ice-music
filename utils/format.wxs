@@ -21,7 +21,18 @@ function formatCount(num) {
   }
 }
 
+function formatRecomItem(item) {
+  return {
+    coverUrl: item.al.picUrl,
+    title: item.name,
+    creator: [{
+      userName: item.ar[0].name
+    }]
+  }
+}
+
 module.exports = {
   formatTime: formatTime,
-  formatCount: formatCount
+  formatCount: formatCount,
+  formatRecomItem: formatRecomItem
 }

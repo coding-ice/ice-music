@@ -12,7 +12,7 @@
     <view class="recom-tit">推荐视频</view>
     <view class="recom-video-list">
       <block wx:for="{{mvRelatedVideoList}}" wx:key="durationms">
-        <video-recom videoItem="{{item}}" />
+        <video-recom isBig videoItem="{{item}}" />
       </block>
     </view>
   </view>

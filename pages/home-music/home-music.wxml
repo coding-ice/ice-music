@@ -1,3 +1,4 @@
+<wxs module="fmt" src="../../utils/format.wxs"></wxs>
 <view class="search">
   <van-search
     value="{{ value }}"
@@ -16,6 +17,13 @@
     </swiper-item>
   </block>
 </swiper>
+
+<view class="recom-song-list">
+  <area-header title="推荐歌曲" bind:handleClick="onRecomHandleClick" />
+  <block wx:for="{{songs}}" wx:key="id">
+    <video-recom videoItem="{{fmt.formatRecomItem(item)}}" />
+  </block>
+</view>
 
 <song-area title="热门歌单" songList="{{hotSongList}}"></song-area>
 <song-area title="推荐歌单" songList="{{recomList}}"></song-area>

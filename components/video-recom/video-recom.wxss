@@ -1,6 +1,5 @@
 .video-recom-item {
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   overflow: hidden;
   margin-bottom: 26rpx;
@@ -8,6 +7,7 @@
 
 .video-item-left {
   width: 40%;
+  margin-right: 3%;
 }
 .video-item-left .cover {
   width: 100%;
@@ -18,7 +18,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 56%;
+  width: 55%;
   padding-right: 10rpx;
 }
 
