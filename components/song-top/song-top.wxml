@@ -1,0 +1,30 @@
+<wxs src="../../utils/format.wxs" module="fmt"></wxs>
+<view class="song-top">
+  <image class="bg-img" src="{{itemData.coverImgUrl}}"></image>
+  <view class="mask"></view>
+  <view class="song-content">
+    <view class="song-top-left">
+      <image class="cover" mode="widthFix" src="{{itemData.coverImgUrl}}"></image>
+    </view>
+    <view class="song-top-right">
+      <text class="tit">{{itemData.name}}</text>
+      <view class="user">
+        <image mode="widthFix" class="avatar" src="{{itemData.creator.avatarUrl}}"></image>
+        <text class="nickname">{{itemData.creator.nickname}}</text>
+      </view>
+      <view class="dec">
+          {{itemData.description}}
+      </view>
+    </view>
+  </view>
+  <view class="icons">
+    <view class="heart">
+      <image class="icon" src="/assets/images/icons/favor_icon.png"></image>
+      {{fmt.formatCount(itemData.playCount)}}
+    </view>
+    <view class="share">
+      <image class="icon" src="/assets/images/icons/share_icon.png"></image>
+      分享
+    </view>
+  </view>
+</view>

@@ -1,4 +1,4 @@
 /* pages/song-list/song-list.wxss */
-page {
+.song-list {
   padding: 0 20rpx;
 }

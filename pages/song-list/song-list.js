@@ -1,7 +1,9 @@
 import {recomSongStore, peakRankStore} from '../../store/index'
+import {getSongRankList} from '../../service/music'
 
 Page({
   data: {
+    isSongMenu: false,
     songs: [],
     title: '',
     currentKey: '',
@@ -13,21 +15,29 @@ Page({
   },
 
   onLoad(options) {
-    let {type:title} = options
-    this.onChangeSongsData(title)
+    let {type:title, id} = options
 
-    //修改标题title
-    if (title === 'recomSongList') {
-      title = '推荐歌曲'
+    if (id) {
+      // song menu
+      this.getSongRankListAction(id)
+      this.setData({ isSongMenu: true })
+    }else {
+      // peak rank
+      this.onChangeSongsData(title)
+      if (title === 'recomSongList') {
+        title = '推荐歌曲'
+      }
+      this.setData({title})
+      wx.setNavigationBarTitle({
+        title
+      })
     }
-    this.setData({title})
-    wx.setNavigationBarTitle({
-      title
-    })
+    
   },
 
   onUnload() {
     const {currentKey} = this.data
+    if (!currentKey) return
     if (currentKey === 'recomSongList') {
       recomSongStore.offState(currentKey, this.setSongsData)
     }else {
@@ -57,5 +67,10 @@ Page({
   
   setSongsData(val) {
     this.setData({songs: val})
+  },
+
+  async getSongRankListAction(id) {
+    const res = await getSongRankList(id)
+    this.setData({songs: res.playlist})
   }
 })

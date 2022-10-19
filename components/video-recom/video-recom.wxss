@@ -11,7 +11,7 @@
 }
 .video-item-left .cover {
   width: 100%;
-  height: auto;
+  height: 110rpx;
   border-radius: 12rpx;
 }
 

@@ -1,0 +1,102 @@
+.song-top {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 450rpx;
+  margin-bottom: 50rpx;
+}
+.bg-img {
+  position: absolute;
+  z-index: 1;
+  width: 100%;
+  height: 450rpx;
+}
+.mask {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .5);
+  backdrop-filter: blur(5px);
+}
+
+.song-content {
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  padding: 0 30rpx;
+}
+
+.song-top-left,
+.song-top-right {
+  position: relative;
+  z-index: 3;
+}
+
+.song-top-left .cover {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 20rpx;
+  margin-right: 40rpx;
+}
+.song-top-right {
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.song-top-right .user {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+}
+.song-top-right .tit {
+  font-size: 36rpx;
+  margin-bottom: 15rpx;
+}
+.song-top-right .avatar {
+  width: 50rpx;
+  height: 50rpx;
+  border-radius: 50%;
+  margin-right: 15rpx;
+}
+.nickname, .dec {
+  font-size: 24rpx;
+}
+
+.dec {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.icons {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 0 30rpx;
+  margin-top: 60rpx;
+  z-index: 3;
+  color: white;
+  font-size: 32rpx;
+}
+
+.heart {
+  margin-right: 100rpx;
+}
+
+.heart,
+.share {
+  display: flex;
+  align-items: center;
+}
+
+.icons .icon {
+  width: 45rpx;
+  height: 45rpx;
+  margin-right: 10rpx;
+}

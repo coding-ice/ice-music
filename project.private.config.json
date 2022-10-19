@@ -21,6 +21,13 @@
           "query": "",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "歌单列表",
+          "pathName": "pages/song-list/song-list",
+          "query": "id=2748492595",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

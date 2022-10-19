@@ -27,8 +27,6 @@
   </view>
 </van-skeleton>
 
-
-
 <song-area title="热门歌单" songList="{{hotSongList}}"></song-area>
 <song-area title="推荐歌单" songList="{{recomList}}"></song-area>
 
