@@ -31,8 +31,14 @@ function formatRecomItem(item) {
   }
 }
 
+function sliceThreePeakList(list) {
+  if (!list) return []
+  return list.slice(0,3)
+}
+
 module.exports = {
   formatTime: formatTime,
   formatCount: formatCount,
-  formatRecomItem: formatRecomItem
+  formatRecomItem: formatRecomItem,
+  sliceThreePeakList: sliceThreePeakList
 }

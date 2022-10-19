@@ -27,3 +27,8 @@
 
 <song-area title="热门歌单" songList="{{hotSongList}}"></song-area>
 <song-area title="推荐歌单" songList="{{recomList}}"></song-area>
+
+<view class="peak-list">
+  <area-header title="巅峰榜" hasMore="{{false}}"/>
+  <peak-area peakRankMap="{{peakRankMap}}" />
+</view>

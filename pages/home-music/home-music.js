@@ -1,5 +1,5 @@
 import {getBannerList, getSongList} from '../../service/music'
-import recomSongStore from '../../store/recomSong.js'
+import {recomSongStore, peakRankStore} from '../../store/index'
 
 Page({
   data:{
@@ -7,6 +7,9 @@ Page({
     songs:[],
     hotSongList: [],
     recomList: [],
+
+    //巅峰榜
+    peakRankMap: {}
   },
 
   onLoad() {
@@ -14,9 +17,24 @@ Page({
     this.getSongListAction()
     this.getRecomListAction()
 
-    // 监听数据
+    // 推荐歌曲 监听数据及派发
     recomSongStore.onState("recomSongList", val => this.setData({songs: val.slice(0,6)}))
-    recomSongStore.dispatch('getRecomSongListAction')
+    recomSongStore.dispatch('getSongRankListAction')
+
+    // 巅峰榜 监听数据及派发
+    for (let peakKey in peakRankStore.state) {
+      this.mapPeakStoreToData(peakKey)
+    }
+
+    peakRankStore.dispatch('getSongRankListAction')
+  },
+
+  // 设置巅峰榜Store到data中
+  mapPeakStoreToData(key) {
+    peakRankStore.onState(key, val => {
+      let newPeakRankMap = {...this.data.peakRankMap, [key]: val}
+      this.setData({peakRankMap: newPeakRankMap})
+    })
   },
 
   onSearchClick() {

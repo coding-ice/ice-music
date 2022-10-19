@@ -1,0 +1,52 @@
+.peak-area .peak-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+  border-radius: 10rpx;
+  overflow: hidden;
+  background: #eeeeee;
+}
+
+.peak-area .peak-item .peak-item-left {
+  flex: 1;
+  overflow: hidden;
+  padding: 15rpx 0 0 20rpx;
+  margin-right: 20rpx;
+}
+
+.peak-area .peak-item .peak-item-left .tit {
+  font-size: 32rpx;
+  margin-bottom: 8rpx;
+}
+.peak-area .peak-item .peak-item-left .song-info {
+  margin-top: 5rpx;
+  font-size: 26rpx;
+  color: #4a4a4a;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.peak-area .peak-item .peak-right {
+  position: relative;
+}
+
+.peak-area .peak-item .peak-right .cover {
+  width: 200rpx;
+}
+
+.peak-area .peak-item .peak-right .count {
+  position: absolute;
+  padding: 4rpx;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, .5);
+  border-radius: 10rpx;
+  color: white;
+  font-size: 24rpx;
+}
+
+
+.peak-area .peak-item:last-child {
+  margin-bottom: 30rpx;
+}

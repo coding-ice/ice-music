@@ -3,6 +3,7 @@
     "van-search": "@vant/weapp/search/index",
     "song-area": "/components/song-area/song-area",
     "area-header": "/components/area-header/area-header",
-    "video-recom": "/components/video-recom/video-recom"
+    "video-recom": "/components/video-recom/video-recom",
+    "peak-area": "/components/peak-area/peak-area"
   }
 }

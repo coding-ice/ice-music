@@ -1,0 +1,17 @@
+<wxs module="fmt" src="../../utils/format.wxs"></wxs>
+<view class="peak-area">
+  <block wx:for="{{peakRankMap}}" wx:key="id">
+    <view class="peak-item">
+        <view class="peak-item-left">
+          <view class="tit">{{item.name}}</view>
+          <block wx:for="{{fmt.sliceThreePeakList(item.tracks)}}" wx:for-item="iten" wx:key="name">
+            <view class="song-info">{{index + 1}}. {{iten.name}} - {{iten.ar[0].name}}</view>
+          </block>
+        </view>
+        <view class="peak-right">
+          <image class="cover" mode="widthFix" src="{{item.coverImgUrl}}" />
+          <text class="count">{{fmt.formatCount(item.playCount)}}</text>
+        </view>
+    </view>
+  </block>
+</view>

@@ -10,7 +10,7 @@
   right: 0;
   bottom: 0;
   font-size: 24rpx;
-  background: rgba(0, 0, 0, .3);
+  background: rgba(0, 0, 0, .5);
   color: white;
   border-radius: 10rpx;
   padding: 2rpx;
