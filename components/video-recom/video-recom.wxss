@@ -1,4 +1,5 @@
 .video-recom-item {
+  position: relative;
   display: flex;
   flex-wrap: wrap;
   overflow: hidden;
@@ -16,6 +17,7 @@
 }
 
 .video-item-right {
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;

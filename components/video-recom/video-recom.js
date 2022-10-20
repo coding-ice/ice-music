@@ -11,6 +11,10 @@ Component({
     isBig: {
       type: Boolean,
       value: false
+    },
+    isArrow: {
+      type: Boolean,
+      value: false
     }
   },
 

@@ -22,7 +22,7 @@
   <view class="recom-song-list">
       <area-header title="推荐歌曲" bind:handleClick="onRecomHandleClick" />
       <block wx:for="{{songs}}" wx:key="id">
-        <video-recom videoItem="{{fmt.formatRecomItem(item)}}" />
+        <video-recom isArrow videoItem="{{fmt.formatRecomItem(item)}}" />
       </block>
   </view>
 </van-skeleton>

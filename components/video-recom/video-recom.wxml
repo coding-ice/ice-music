@@ -6,4 +6,5 @@
     <view class="tit">{{videoItem.title}}</view>
     <view class="userName">{{videoItem.creator[0].userName}}</view>
   </view>
+  <van-icon name="arrow" wx:if="{{isArrow}}" color="#aaa" />
 </view>
