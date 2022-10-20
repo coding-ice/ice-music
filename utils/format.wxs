@@ -23,6 +23,7 @@ function formatCount(num) {
 
 function formatRecomItem(item) {
   return {
+    id: item.id,
     coverUrl: item.al.picUrl,
     title: item.name,
     creator: [{

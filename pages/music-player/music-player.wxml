@@ -1,0 +1,69 @@
+<view class="music-player">
+  <image mode="aspectFill" class="bg-img" src="{{songInfo.al.picUrl}}"></image>
+  <view class="mask"></view>
+  <view class="statusBar" style="height: {{statusBarHeight}}px"></view>
+  <nav-bar>
+    <view class="taps" slot="slot-center">
+      <block wx:for="{{taps}}" wx:key="*this">
+        <view 
+          class="tag {{currentIdx === index ? 'active' : ''}}" 
+          data-index="{{index}}" 
+          bindtap="handleTap">
+          {{item}}
+        </view>
+        <view wx:if="{{index !== taps.length - 1}}" class="line"> | </view>
+      </block>
+    </view>
+  </nav-bar>
+
+  <view class="pages">
+    <swiper class="swiper" style="height: {{innerHeight}}px;" bindchange="onSwiperChange" current="{{currentIdx}}">
+      <swiper-item>
+        <view class="songs">
+          <view class="cover-wrap">
+            <image mode="widthFix" class="cover" src="{{songInfo.al.picUrl}}"></image>
+          </view>
+          <view class="songs-info">
+            <view class="name">{{songInfo.name}}</view>
+            <view class="author">{{songInfo.ar[0].name}}</view>
+            <view class="dec">我是一句歌词</view>
+          </view>
+          <view class="slider">
+            <slider class="slider-bar" block-size="14" />
+            <view class="slider-time">
+              <text>00:00</text>
+              <text>03:09</text>
+            </view>
+          </view>
+          <view class="btns">
+            <image 
+              class="btn btn-mode"
+              src="/assets/images/player/play_random.png"
+            />
+            <image 
+              class="btn btn-prev"
+              src="/assets/images/player/play_prev.png"
+            />
+            <image 
+              class="btn btn-play"
+              src="/assets/images/player/play_pause.png"
+            />
+            <image 
+              class="btn btn-next"
+              src="/assets/images/player/play_next.png"
+            />
+            <image 
+              class="btn btn-music"
+              src="/assets/images/player/play_music.png"
+            />
+          </view>
+        </view>
+      </swiper-item>
+      <swiper-item>
+        <view class="lyric">
+          页面二
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+</view>

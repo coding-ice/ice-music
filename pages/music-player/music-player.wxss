@@ -1,0 +1,109 @@
+.bg-img,
+.mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.mask {
+  background: rgba(0, 0, 0, .4);
+  backdrop-filter: blur(20px);
+}
+
+.taps {
+  display: flex;
+  font-size: 28rpx;
+  color: #aaa;
+}
+.taps .active {
+  color: white;
+}
+.taps .line {
+  margin: 0 8rpx;
+}
+
+/* pages */
+.pages {
+  color: white;
+}
+
+.pages .swiper {
+  box-sizing: border-box;
+  padding: 20rpx 40rpx;
+}
+
+.songs {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  flex-direction: column;
+}
+.songs .cover-wrap {
+  flex: 1;
+  width: 100%;
+  height: 100%;
+}
+.songs .cover {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+
+.songs-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10rpx;
+  width: 100%;
+}
+
+.songs-info .name {
+  font-size: 46rpx;
+  font-weight: bold;
+}
+.songs-info .author {
+  font-size: 28rpx;
+  color: #aaa;
+}
+.dec {
+  text-align: center;
+}
+
+.slider {
+  width: 100%;
+}
+
+.slider .slider-bar {
+  margin: 15rpx 0 12rpx 18rpx;
+}
+
+.slider-time {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+}
+
+.btns {
+  margin: 20rpx 0 30rpx;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btns .btn {
+  width: 60rpx;
+  height: 60rpx;
+}
+
+.btns .btn-play {
+  width: 120rpx;
+  height: 120rpx;
+}
+
+.btns .btn-mode {
+  width: 80rpx;
+  height: 80rpx;
+}

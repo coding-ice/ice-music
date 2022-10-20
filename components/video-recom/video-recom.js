@@ -28,6 +28,13 @@ Component({
    * 组件的方法列表
    */
   methods: {
-
+    handleTap() {
+      const {id} = this.data.videoItem
+      if(!id) return
+      
+      wx.navigateTo({
+        url: `/pages/music-player/music-player?id=${id}`,
+      })
+    }
   }
 })

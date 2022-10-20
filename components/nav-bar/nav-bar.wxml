@@ -1,0 +1,10 @@
+<view class="nav-bar">
+  <view class="left" bindtap="backTap">
+    <van-icon name="arrow-left" color="#fff" size="18" />
+  </view>
+  <view class="center">
+    <view class="slot"><slot name="slot-center"></slot></view>
+    <view class="default">{{center}}</view>
+  </view>
+  <view class="right"></view>
+</view>
