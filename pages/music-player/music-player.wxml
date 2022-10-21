@@ -27,7 +27,7 @@
           <view class="songs-info">
             <view class="name">{{songInfo.name}}</view>
             <view class="author">{{songInfo.ar[0].name}}</view>
-            <view class="dec">我是一句歌词</view>
+            <view class="dec">{{currentLyr}}</view>
           </view>
           <view class="slider">
             <slider class="slider-bar" block-size="14" value="{{sliderValue}}" bindchange="onSliderChange" bindchanging="onSliderChanging" />
@@ -47,7 +47,8 @@
             />
             <image 
               class="btn btn-play"
-              src="/assets/images/player/play_pause.png"
+              src="/assets/images/player/play_{{isPlaying ? 'pause' : 'resume'}}.png"
+              bindtap="pauseOrPlaytap"
             />
             <image 
               class="btn btn-next"
@@ -61,9 +62,11 @@
         </view>
       </swiper-item>
       <swiper-item>
-        <view class="lyric">
-          页面二
-        </view>
+        <scroll-view class="lyric" scroll-y>
+          <block wx:for="{{lyriStrArr}}" wx:key="time">
+            <view class="text">{{item.text}}</view>
+          </block>
+        </scroll-view >
       </swiper-item>
     </swiper>
   </view>

@@ -32,7 +32,7 @@
 
 .pages .swiper {
   box-sizing: border-box;
-  padding: 20rpx 50rpx;
+  padding: 20rpx 60rpx;
 }
 
 .songs {
@@ -43,7 +43,7 @@
 }
 .songs .cover-wrap {
   width: 100%;
-  margin-bottom: 80rpx;
+  margin-bottom: 70rpx;
 }
 .songs .cover {
   width: 100%;
@@ -67,6 +67,8 @@
   color: #aaa;
 }
 .dec {
+  height: 42rpx;
+  margin-top: 12rpx;
   text-align: center;
 }
 
@@ -105,4 +107,15 @@
 .btns .btn-mode {
   width: 80rpx;
   height: 80rpx;
+}
+
+/* 歌词页面 */
+.lyric {
+  text-align: center;
+  height: 100%;
+}
+
+.lyric .text {
+  color: #aaa;
+  line-height: 40px;
 }

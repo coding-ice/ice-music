@@ -1,4 +1,5 @@
 import _ from 'underscore'
+import parseLyricString from '../../utils/parse-lyricString'
 import { getSongDetail, getSongLyric } from '../../service/player'
 const app = getApp()
 // 创建音乐上下文
@@ -7,7 +8,7 @@ const AudioContext = wx.createInnerAudioContext()
 Page({
   data: {
     currentIdx: 0,
-    lyricString: '',
+    lyriStrArr: [],
     songInfo: {},
     statusBarHeight: 0,
     taps: ["歌曲","歌词"],
@@ -17,7 +18,14 @@ Page({
     currentTime: 0,
     sliderValue: 0,
     isSliderChangIng: false,
-    isWaitUpdate: false
+    isWaitUpdate: false,
+
+    // 一些按钮的状态
+    isPlaying: true,
+
+    // 关于歌词
+    currentLyr: '',
+    lyrIdx: -1,
   },
 
   onLoad(options) {
@@ -29,16 +37,32 @@ Page({
     this.getSongLyricAction(id)
 
     //更新为节流函数
-    const updatedCurrentTimeThro = _.throttle(this.updateCurrentTime, 500, {leading: false})
+    const updatedCurrentTimeThro = _.throttle(this.updateCurrentTime, 500, {leading: false, trailing: false})
     AudioContext.autoplay = true
     AudioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
 
     AudioContext.onTimeUpdate(() => {
-      const {isSliderChangIng, isWaitUpdate} = this.data
+      const {isSliderChangIng, isWaitUpdate, lyriStrArr} = this.data
 
       if (!isSliderChangIng && !isWaitUpdate) {
         updatedCurrentTimeThro()
       }
+
+      //匹配对应的歌词
+      let index = lyriStrArr.length - 1
+      const currentTime = AudioContext.currentTime * 1000
+      for (let i = 0; i < lyriStrArr.length; i++) {
+        if (lyriStrArr[i].time > currentTime) {
+          index = i - 1
+          break;
+        } 
+      }
+
+      if (index !== this.data.lyrIdx) {
+        const currentLyr = lyriStrArr[index].text
+        this.setData({currentLyr,lyrIdx: index})
+      }
+
     })
 
     AudioContext.onWaiting(() => {
@@ -47,6 +71,10 @@ Page({
 
     AudioContext.onCanplay(() => {
       AudioContext.play()
+    })
+
+    AudioContext.onEnded(() => {
+      this.setData({isPlaying: false})
     })
 
   },
@@ -58,7 +86,10 @@ Page({
 
   async getSongLyricAction(id) {
     const res = await getSongLyric(id)
-    this.setData({lyricString: res.lrc.lyric})
+    if(!res) return
+
+    const lyriStrArr = parseLyricString(res.lrc.lyric)
+    this.setData({lyriStrArr})
   },
 
   handleTap(e) {
@@ -78,7 +109,7 @@ Page({
   },
 
   onSliderChange(e) {
-    this.setData({isWaitUpdate: true})
+    this.data.isWaitUpdate = true
 
     setTimeout(() => {
       this.data.isWaitUpdate = false
@@ -102,5 +133,16 @@ Page({
 
     const currentTime = value / 100 * dt
     this.setData({currentTime})
+  },
+
+  // 一些按钮的事件
+  pauseOrPlaytap() {
+    if (AudioContext.paused) {
+      AudioContext.play()
+      this.setData({isPlaying: true})
+    } else {
+      AudioContext.pause()
+      this.setData({isPlaying: false})
+    }
   }
 })
