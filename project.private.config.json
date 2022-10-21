@@ -35,6 +35,13 @@
           "query": "id=865632948",
           "launchMode": "default",
           "scene": null
+        },
+        {
+          "name": "搜索页面",
+          "pathName": "pages/song-search/song-search",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
         }
       ]
     }

@@ -1,2 +1,28 @@
-<!--pages/song-search/song-search.wxml-->
-<text>pages/song-search/song-search.wxml</text>
+
+<view class="search">
+  <van-search
+    value="{{ value }}"
+    shape="round"
+    background="#fafafa"
+    color="white"
+    bind:change="onChange"
+  />
+</view>
+
+<view class="song-context">
+  <view class="hot-keywords" wx:if="{{!value}}">
+    <area-header title="热门搜索" hasMore="{{false}}" />
+    <view class="hot-tags">
+      <block wx:for="{{tags}}" wx:key="first">
+        <text class="keywords {{index === currentIdx ? 'active' : ''}}" bindtap="handleTagTap" data-keywords="{{item.first}}" data-index="{{index}}">{{item.first}}</text>
+      </block>
+    </view>
+  </view>
+  <view wx:else class="best-keywords">
+    <view wx:if="{{songs.length}}" class="tit">最佳匹配</view>
+    <block wx:for="{{songs}}" wx:key="id">
+      <song-info itemData="{{item}}" index="{{index + 1}}"/>
+    </block>
+  </view>
+
+</view>

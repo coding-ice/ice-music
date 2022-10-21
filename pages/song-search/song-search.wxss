@@ -1,1 +1,37 @@
-/* pages/song-search/song-search.wxss */
+page {
+  background: #fafafa;
+}
+.search {
+  position: sticky;
+  top: 0;
+  --search-background-color: white;
+}
+
+.song-context {
+  padding: 0 30rpx;
+}
+
+.hot-tags {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.hot-tags .keywords {
+  padding: 4rpx 10rpx;
+  margin: 0 30rpx 20rpx 0;
+  font-size: 24rpx;
+  background-color: white;
+  border-radius: 20rpx;
+  color: #333;
+}
+
+.hot-tags .keywords.active {
+  color: #4dd69f;
+}
+
+.best-keywords .tit {
+  font-size: 30rpx;
+  line-height: 40rpx;
+  margin-bottom: 30rpx;
+  color: #4dd69f;
+}
