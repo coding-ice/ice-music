@@ -1,3 +1,4 @@
+<wxs module="fmt" src="../../utils/format.wxs"></wxs>
 <view class="music-player">
   <image mode="aspectFill" class="bg-img" src="{{songInfo.al.picUrl}}"></image>
   <view class="mask"></view>
@@ -15,7 +16,7 @@
       </block>
     </view>
   </nav-bar>
-
+ 
   <view class="pages">
     <swiper class="swiper" style="height: {{innerHeight}}px;" bindchange="onSwiperChange" current="{{currentIdx}}">
       <swiper-item>
@@ -29,10 +30,10 @@
             <view class="dec">我是一句歌词</view>
           </view>
           <view class="slider">
-            <slider class="slider-bar" block-size="14" />
+            <slider class="slider-bar" block-size="14" value="{{sliderValue}}" bindchange="onSliderChange" bindchanging="onSliderChanging" />
             <view class="slider-time">
-              <text>00:00</text>
-              <text>03:09</text>
+              <text>{{fmt.formatTime(currentTime)}}</text>
+              <text>{{fmt.formatTime(songInfo.dt)}}</text>
             </view>
           </view>
           <view class="btns">
