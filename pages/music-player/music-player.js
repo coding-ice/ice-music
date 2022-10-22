@@ -35,7 +35,8 @@ Page({
     playerSongs: [],
     playerIdx: -1,
     mode: 0, // 0: 列表循环 1: 随机播放 2: 单曲循环
-    modeIcons: ["order", "random", "repeat"]
+    modeIcons: ["order", "random", "repeat"],
+    showPopup: false
   },
 
   onLoad(options) {
@@ -207,6 +208,22 @@ Page({
     this.setData({mode})
   },
 
+  showSongsTap() {
+    this.setData({showPopup: true})
+  },
+
+  onClose(){
+    this.setData({showPopup: false})
+  },
+
+  handlePopupItemTap(e) {
+    const {index} = e.currentTarget.dataset
+    const {playerSongs} = this.data
+
+    this.setData({playerIdx: index})
+    this.setUpMusicPlayer(playerSongs[index].id)
+    this.onClose()
+  },
 
   // 网络请求
   async getSongDetailAction(id) {

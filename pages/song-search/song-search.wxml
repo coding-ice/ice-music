@@ -24,7 +24,7 @@
   <view wx:if="{{type === 'keywords'}}" class="best-keywords">
     <view wx:if="{{songs.length}}" class="tit">最佳匹配</view>
     <block wx:for="{{songs}}" wx:key="id">
-      <song-info itemData="{{item}}" index="{{index + 1}}"/>
+      <song-info itemData="{{item}}" index="{{index + 1}}" bindtap="playerListTap" data-index="{{index}}"/>
     </block>
   </view>
 

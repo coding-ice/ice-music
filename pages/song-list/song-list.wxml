@@ -2,6 +2,6 @@
 <view class="song-list">
   <area-header wx:if="{{title}}" title="{{title}}" hasMore="{{false}}" />
   <block wx:for="{{songs.tracks}}" wx:key="id">
-    <song-info itemData="{{item}}" index="{{index + 1}}" />
+    <song-info itemData="{{item}}" index="{{index + 1}}" bindtap="playerListTap" data-index="{{index}}" />
   </block>
 </view>

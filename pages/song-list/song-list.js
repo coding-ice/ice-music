@@ -1,4 +1,4 @@
-import {recomSongStore, peakRankStore} from '../../store/index'
+import {recomSongStore, peakRankStore, playerListStore} from '../../store/index'
 import {getSongRankList} from '../../service/music'
 
 Page({
@@ -67,6 +67,14 @@ Page({
   
   setSongsData(val) {
     this.setData({songs: val})
+  },
+
+  playerListTap(e) {
+    const {songs} = this.data
+    const {index} = e.currentTarget.dataset
+
+    playerListStore.setState("playerSongs", songs.tracks)
+    playerListStore.setState("playerIdx", index)
   },
 
   async getSongRankListAction(id) {

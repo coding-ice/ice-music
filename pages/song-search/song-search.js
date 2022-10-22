@@ -1,4 +1,5 @@
 import {throttle} from 'underscore'
+import {playerListStore} from '../../store/index'
 import {getHotTags,getKeywords,getSuggestKeywords} from '../../service/search'
 
 Page({
@@ -46,6 +47,15 @@ Page({
     //根据关键字 获取songs的列
     this.getKeywordsAction(keyword)
     this.setData({type: 'keywords'})
+  },
+
+  // 共享播放列表数据
+  playerListTap(e) {
+    const {index} = e.currentTarget.dataset 
+    const {songs} = this.data
+
+    playerListStore.setState("playerIdx", index)
+    playerListStore.setState("playerSongs", songs)
   },
 
   // 发送网络请求

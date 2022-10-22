@@ -6,17 +6,14 @@
   <nav-bar>
     <view class="taps" slot="slot-center">
       <block wx:for="{{taps}}" wx:key="*this">
-        <view 
-          class="tag {{currentIdx === index ? 'active' : ''}}" 
-          data-index="{{index}}" 
-          bindtap="handleTap">
+        <view class="tag {{currentIdx === index ? 'active' : ''}}" data-index="{{index}}" bindtap="handleTap">
           {{item}}
         </view>
         <view wx:if="{{index !== taps.length - 1}}" class="line"> | </view>
       </block>
     </view>
   </nav-bar>
- 
+
   <view class="pages">
     <swiper class="swiper" style="height: {{innerHeight}}px;" bindchange="onSwiperChange" current="{{currentIdx}}">
       <swiper-item>
@@ -24,53 +21,51 @@
           <view class="cover-wrap">
             <image mode="widthFix" class="cover" src="{{songInfo.al.picUrl}}"></image>
           </view>
-          <view class="songs-info">
-            <view class="name">{{songInfo.name}}</view>
-            <view class="author">{{songInfo.ar[0].name}}</view>
-            <view class="dec">{{currentLyr}}</view>
-          </view>
-          <view class="slider">
-            <slider class="slider-bar" block-size="14" value="{{sliderValue}}" bindchange="onSliderChange" bindchanging="onSliderChanging" />
-            <view class="slider-time">
-              <text>{{fmt.formatTime(currentTime)}}</text>
-              <text>{{fmt.formatTime(songInfo.dt)}}</text>
+          <view class="song-content">
+            <view class="songs-info">
+              <view class="name">{{songInfo.name}}</view>
+              <view class="author">{{songInfo.ar[0].name}}</view>
+              <view class="dec">{{currentLyr}}</view>
             </view>
-          </view>
-          <view class="btns">
-            <image 
-              class="btn btn-mode"
-              src="/assets/images/player/play_{{modeIcons[mode]}}.png"
-              bindtap="changeModeTap"
-            />
-            <image 
-              class="btn btn-prev"
-              src="/assets/images/player/play_prev.png"
-              bindtap="btnHandlePrevTap"
-            />
-            <image 
-              class="btn btn-play"
-              src="/assets/images/player/play_{{isPlaying ? 'pause' : 'resume'}}.png"
-              bindtap="pauseOrPlaytap"
-            />
-            <image 
-              class="btn btn-next"
-              src="/assets/images/player/play_next.png"
-              bindtap="btnHandleNextTap"
-            />
-            <image 
-              class="btn btn-music"
-              src="/assets/images/player/play_music.png"
-            />
+            <view class="slider">
+              <slider class="slider-bar" block-size="14" value="{{sliderValue}}" bindchange="onSliderChange" bindchanging="onSliderChanging" />
+              <view class="slider-time">
+                <text>{{fmt.formatTime(currentTime)}}</text>
+                <text>{{fmt.formatTime(songInfo.dt)}}</text>
+              </view>
+            </view>
+            <view class="btns">
+              <image class="btn btn-mode" src="/assets/images/player/play_{{modeIcons[mode]}}.png" bindtap="changeModeTap" />
+              <image class="btn btn-prev" src="/assets/images/player/play_prev.png" bindtap="btnHandlePrevTap" />
+              <image class="btn btn-play" src="/assets/images/player/play_{{isPlaying ? 'pause' : 'resume'}}.png" bindtap="pauseOrPlaytap" />
+              <image class="btn btn-next" src="/assets/images/player/play_next.png" bindtap="btnHandleNextTap" />
+              <image class="btn btn-music" src="/assets/images/player/play_music.png" bindtap="showSongsTap" />
+            </view>
           </view>
         </view>
       </swiper-item>
       <swiper-item>
-        <scroll-view class="lyric" scroll-y	scroll-top="{{lyricScrollTop}}" scroll-with-animation>
+        <scroll-view class="lyric" scroll-y scroll-top="{{lyricScrollTop}}" scroll-with-animation>
           <block wx:for="{{lyriStrArr}}" wx:key="time">
             <view class="text {{lyrIdx === index ? 'active' : ''}}" style="padding-top: {{index === 0 ? innerHeight / 2 - 60 : 0}}px; padding-bottom: {{index === lyriStrArr.length - 1 ? innerHeight / 2 - 60 : 0 }}px;">{{item.text}}</view>
           </block>
-        </scroll-view >
+        </scroll-view>
       </swiper-item>
     </swiper>
   </view>
 </view>
+
+<van-popup
+  show="{{ showPopup }}"
+  round
+  closeable
+  position="bottom"
+  custom-style="height: 40%;padding-left:40rpx"
+  bind:close="onClose"
+>
+  <block wx:for="{{playerSongs}}" wx:key="id">
+    <view class="song-dec {{playerIdx === index ? 'active' : ''}}" data-index="{{index}}" bindtap="handlePopupItemTap">
+      {{item.name}} <text class="author"> - {{item.ar[0].name}}</text>
+    </view>
+  </block>
+</van-popup>
