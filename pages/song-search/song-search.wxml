@@ -5,12 +5,15 @@
     shape="round"
     background="#fafafa"
     color="white"
+    show-action
     bind:change="onChange"
+    bind:clear="onClear"
+    bind:cancel="onClear"
   />
 </view>
 
 <view class="song-context">
-  <view class="hot-keywords" wx:if="{{!value}}">
+  <view class="hot-keywords" wx:if="{{type === 'hot'}}">
     <area-header title="热门搜索" hasMore="{{false}}" />
     <view class="hot-tags">
       <block wx:for="{{tags}}" wx:key="first">
@@ -18,10 +21,20 @@
       </block>
     </view>
   </view>
-  <view wx:else class="best-keywords">
+  <view wx:if="{{type === 'keywords'}}" class="best-keywords">
     <view wx:if="{{songs.length}}" class="tit">最佳匹配</view>
     <block wx:for="{{songs}}" wx:key="id">
       <song-info itemData="{{item}}" index="{{index + 1}}"/>
+    </block>
+  </view>
+
+  <view wx:if="{{type === 'suggest'}}" class="suggust">
+    <view class="search-tit" wx:if="{{suggestList.length}}">搜索"{{value}}"</view>
+    <block wx:for="{{suggestList}}" wx:key="keyword">
+      <view class="search-item" data-item="{{item}}" bindtap="searchItemTap">
+        <van-icon name="search" />
+        <text class="name"> {{item.keyword}} </text>
+      </view>
     </block>
   </view>
 

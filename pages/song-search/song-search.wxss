@@ -35,3 +35,23 @@ page {
   margin-bottom: 30rpx;
   color: #4dd69f;
 }
+
+.search-tit {
+  margin-bottom: 15rpx;
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #4dd69f;
+}
+
+.search-item {
+  display: flex;
+  align-items: center;
+  height: 60rpx;
+  line-height: 60rpx;
+  margin-bottom: 10rpx;
+}
+
+.search-item .name {
+  margin-left: 20rpx;
+  color: rgb(70, 69, 69);
+}

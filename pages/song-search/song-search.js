@@ -7,7 +7,8 @@ Page({
     tags: [],
     currentIdx: 0,
     songs: [],
-    suggestList: []
+    suggestList: [],
+    type: 'hot',
   },
 
   onLoad(options) {
@@ -16,16 +17,35 @@ Page({
 
   onChange: throttle(function(e) {
     const {detail: value} = e
-    this.setData({value});
+    this.setData({value,suggestList: []});
 
-    if(!value) return 
+    if (!value) {
+      this.setData({type: 'hot', songs: []});
+      return
+    } else {
+      this.setData({type: 'suggest'});
+    }
+
     this.getSuggestKeywords(value)
   }, 500),
 
+  onClear() {
+    this.setData({type: 'hot', songs: []})
+  },
+
   handleTagTap(e) {
+    this.setData({type: 'keywords'})
     const {keywords,index} = e.currentTarget.dataset
     this.getKeywordsAction(keywords)
     this.setData({value: keywords, currentIdx: index})
+  },
+
+  searchItemTap(e) {
+    const {item:{keyword}} = e.currentTarget.dataset
+
+    //根据关键字 获取songs的列
+    this.getKeywordsAction(keyword)
+    this.setData({type: 'keywords'})
   },
 
   // 发送网络请求
