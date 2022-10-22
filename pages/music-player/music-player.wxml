@@ -39,11 +39,13 @@
           <view class="btns">
             <image 
               class="btn btn-mode"
-              src="/assets/images/player/play_random.png"
+              src="/assets/images/player/play_{{modeIcons[mode]}}.png"
+              bindtap="changeModeTap"
             />
             <image 
               class="btn btn-prev"
               src="/assets/images/player/play_prev.png"
+              bindtap="btnHandlePrevTap"
             />
             <image 
               class="btn btn-play"
@@ -53,6 +55,7 @@
             <image 
               class="btn btn-next"
               src="/assets/images/player/play_next.png"
+              bindtap="btnHandleNextTap"
             />
             <image 
               class="btn btn-music"

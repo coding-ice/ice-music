@@ -1,5 +1,5 @@
 import {getBannerList, getSongList} from '../../service/music'
-import {recomSongStore, peakRankStore} from '../../store/index'
+import {recomSongStore, peakRankStore, playerListStore} from '../../store/index'
 
 Page({
   data:{
@@ -50,6 +50,14 @@ Page({
     wx.navigateTo({
       url: '/pages/song-list/song-list?type=recomSongList',
     })
+  },
+
+  playerListTap(e) {
+    const {songs} = this.data
+    const {index} = e.currentTarget.dataset
+
+    playerListStore.setState("playerSongs", songs)
+    playerListStore.setState("playerIdx", index)
   },
 
   // 1. 获取轮播图数据
