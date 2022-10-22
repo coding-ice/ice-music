@@ -70,6 +70,9 @@
   height: 42rpx;
   margin-top: 12rpx;
   text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .slider {
@@ -115,7 +118,16 @@
   height: 100%;
 }
 
+.lyric ::-webkit-scrollbar {
+  display: none;
+}
+
 .lyric .text {
   color: #aaa;
   line-height: 40px;
+}
+
+.lyric .active {
+  font-size: 36rpx;
+  color: #00ff00;
 }

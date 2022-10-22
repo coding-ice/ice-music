@@ -26,6 +26,7 @@ Page({
     // 关于歌词
     currentLyr: '',
     lyrIdx: -1,
+    lyricScrollTop: 0
   },
 
   onLoad(options) {
@@ -60,7 +61,7 @@ Page({
 
       if (index !== this.data.lyrIdx) {
         const currentLyr = lyriStrArr[index].text
-        this.setData({currentLyr,lyrIdx: index})
+        this.setData({currentLyr,lyrIdx: index, lyricScrollTop: index * 40})
       }
 
     })

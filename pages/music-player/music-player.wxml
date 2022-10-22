@@ -62,9 +62,9 @@
         </view>
       </swiper-item>
       <swiper-item>
-        <scroll-view class="lyric" scroll-y>
+        <scroll-view class="lyric" scroll-y	scroll-top="{{lyricScrollTop}}" scroll-with-animation>
           <block wx:for="{{lyriStrArr}}" wx:key="time">
-            <view class="text">{{item.text}}</view>
+            <view class="text {{lyrIdx === index ? 'active' : ''}}" style="padding-top: {{index === 0 ? innerHeight / 2 - 60 : 0}}px; padding-bottom: {{index === lyriStrArr.length - 1 ? innerHeight / 2 - 60 : 0 }}px;">{{item.text}}</view>
           </block>
         </scroll-view >
       </swiper-item>
