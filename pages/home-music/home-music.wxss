@@ -21,3 +21,69 @@ page {
 .van-skeleton__row {
   height: 110rpx !important;
 }
+
+.play-status {
+  height: 44px;
+}
+
+.play-bar {
+  display: flex;
+  justify-content: space-between;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 9;
+  box-sizing: border-box;
+  padding: 0 40rpx;
+  height: 44px;
+  background: #ffffff;
+}
+.play-bar .left {
+  width: 80%;
+}
+.play-bar .left,
+.play-bar .right {
+  display: flex;
+  align-items: center;
+}
+
+.play-bar .left .song-name {
+  margin-right: 20rpx;
+  font-size: 26rpx;
+  color: #333;
+}
+
+.play-bar .left .lyr {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 22rpx;
+  color: #aaa;
+}
+
+.play-bar .album {
+  position: relative;
+  z-index: 9;
+  top: -8px;
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+  border-radius: 50%;
+  animation: albumAni 10s linear infinite;
+}
+
+@keyframes albumAni {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.play-bar .right .icon {
+  width: 45rpx;
+  height: 45rpx;
+}

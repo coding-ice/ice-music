@@ -33,6 +33,8 @@ export const playerListStore = new HYEventStore({
       ctx.isPlaying = true
       ctx.lyriStrArr = []
       ctx.currentLyr = ''
+      ctx.lyrIdx = -1
+      ctx.lyricScrollTop = 0
     },
     //初始化音乐播放器
     setUpMusicPlayer(ctx, id, playerIdx = -1) {
@@ -70,11 +72,11 @@ export const playerListStore = new HYEventStore({
 
           if (index !== ctx.lyrIdx) {
             const currentLyr = lyriStrArr[index]
-            if (!currentLyr) return
+            if (!currentLyr.text.trim()) return
 
             ctx.currentLyr = currentLyr.text,
-              ctx.lyrIdx = index,
-              ctx.lyricScrollTop = index * 40
+            ctx.lyrIdx = index,
+            ctx.lyricScrollTop = index * 40
           }
         })
 
@@ -133,6 +135,16 @@ export const playerListStore = new HYEventStore({
       if (mode === modeIcons.length) mode = 0
   
       ctx.mode = mode
+    },
+
+    pauseOrPlaytap(ctx) {
+      if (AudioContext.paused) {
+        AudioContext.play()
+        ctx.isPlaying = true
+      } else {
+        AudioContext.pause()
+        ctx.isPlaying = false
+      }
     },
 
     // 网络请求

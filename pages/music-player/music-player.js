@@ -20,6 +20,7 @@ Page({
     isWaitUpdate: false,
     showPopup: false,
     modeIcons: ["order", "random", "repeat"],
+    stateKeys: ["playerSongs", "playerIdx", "songInfo", "isinitPlayer", "currentTime", "isPlaying", "lyriStrArr", "currentLyr", "lyricScrollTop", "mode", "lyrIdx"],
 
 
     //需要存放到Store的逻辑
@@ -40,6 +41,9 @@ Page({
     const {
       id
     } = options
+    if (id) {
+      playerListStore.dispatch('setUpMusicPlayer', id)
+    }
     const {
       statusBarHeight,
       innerHeight
@@ -51,90 +55,8 @@ Page({
       songInfo: {}
     })
 
-    const updatedCurrentTimeThro = _.throttle(this.updateCurrentTime, 500, {
-      leading: false,
-      trailing: false
-    })
-
     // 监听数据的改变
-    playerListStore.onStates(["playerSongs", "playerIdx", "songInfo", "isinitPlayer", "currentTime", "isPlaying", "lyriStrArr", "currentLyr", "lyricScrollTop", "mode", "lyrIdx"], ({
-      playerSongs,
-      playerIdx,
-      songInfo,
-      isinitPlayer,
-      currentTime,
-      isPlaying,
-      lyriStrArr,
-      currentLyr,
-      lyricScrollTop,
-      mode,
-      lyrIdx
-    }) => {
-      if (playerSongs) {
-        this.setData({
-          playerSongs
-        })
-      }
-      if (playerIdx !== undefined) {
-        this.setData({
-          playerIdx
-        })
-      }
-      if (songInfo) {
-        this.setData({
-          songInfo
-        })
-      }
-      if (isinitPlayer !== undefined) {
-        this.setData({
-          isinitPlayer
-        })
-      }
-      if (currentTime !== undefined) {
-        if(!this.data.isSliderChangIng) {
-          this.setData({currentTime})
-          updatedCurrentTimeThro(currentTime)
-        }
-      }
-      if (isPlaying !== undefined) {
-        this.setData({
-          isPlaying
-        })
-      }
-      if (lyriStrArr) {
-        this.setData({
-          lyriStrArr
-        })
-      }
-      if (lyrIdx !== undefined) {
-        this.setData({
-          lyrIdx
-        })
-      }
-      if (currentLyr !== undefined) {
-        this.setData({
-          currentLyr
-        })
-      }
-      if (lyricScrollTop !== undefined) {
-        this.setData({
-          lyricScrollTop
-        })
-      }
-      if (playerIdx !== undefined) {
-        console.log(playerIdx)
-        this.setData({
-          playerIdx
-        })
-      }
-      if (mode !== undefined) {
-        this.setData({
-          mode
-        })
-      }
-    })
-
-    playerListStore.dispatch('setUpMusicPlayer', id)
+    playerListStore.onStates(this.data.stateKeys, this.watchPlayStore)
   },
 
   handleTap(e) {
@@ -155,16 +77,18 @@ Page({
     })
   },
 
-  updateCurrentTime(currentTime) {
+  updatedCurrentTimeThro: throttle(function(currentTime) {
     const sliderValue = (currentTime / this.data.songInfo.dt) * 100
     this.setData({
       currentTime,
       sliderValue
     })
-  },
+  }, 500, {trailing: false, leading: false}),
 
   onSliderChange(e) {
-    const {isPlaying} = this.data
+    const {
+      isPlaying
+    } = this.data
     this.data.isWaitUpdate = true
 
     setTimeout(() => {
@@ -182,7 +106,9 @@ Page({
     //seek 传入秒
     AudioContext.seek(currentTime / 1000);
     if (!isPlaying) {
-      this.setData({isPlaying: true})
+      this.setData({
+        isPlaying: true
+      })
     }
 
     //重新定义是否在拖动
@@ -211,27 +137,23 @@ Page({
 
   // 一些按钮的事件
   pauseOrPlaytap() {
-    if (AudioContext.paused) {
-      AudioContext.play()
-      this.setData({
-        isPlaying: true,
-        isSliderChangIng: false
-      })
-    } else {
-      AudioContext.pause()
-      this.setData({
-        isPlaying: false
-      })
-    }
+    // this.setData({
+    //   isSliderChangIng: false
+    // })
+    playerListStore.dispatch('pauseOrPlaytap')
   },
 
   btnHandlePrevTap() {
-    this.setData({sliderValue: 0, currentTime: 0, currentLyr: ''})
+    this.setData({
+      sliderValue: 0
+    })
     playerListStore.dispatch('handlePrevOrNext', false)
   },
 
   btnHandleNextTap() {
-    this.setData({sliderValue: 0, currentTime: 0, currentLyr: ''})
+    this.setData({
+      sliderValue: 0
+    })
     playerListStore.dispatch('handlePrevOrNext', true)
   },
 
@@ -260,11 +182,94 @@ Page({
     } = this.data
 
     this.setData({
-      playerIdx:index,
+      playerIdx: index,
       sliderValue: 0
     })
 
     playerListStore.dispatch('setUpMusicPlayer', playerSongs[index].id, index)
     this.onClose()
   },
+
+  watchPlayStore({
+    playerSongs,
+    playerIdx,
+    songInfo,
+    isinitPlayer,
+    currentTime,
+    isPlaying,
+    lyriStrArr,
+    currentLyr,
+    lyricScrollTop,
+    mode,
+    lyrIdx
+  }) {
+    if (playerSongs) {
+      this.setData({
+        playerSongs
+      })
+    }
+    if (playerIdx !== undefined) {
+      this.setData({
+        playerIdx
+      })
+    }
+    if (songInfo) {
+      this.setData({
+        songInfo
+      })
+    }
+    if (isinitPlayer !== undefined) {
+      this.setData({
+        isinitPlayer
+      })
+    }
+    if (currentTime !== undefined) {
+      if (!this.data.isSliderChangIng) {
+        this.setData({
+          currentTime
+        })
+        this.updatedCurrentTimeThro(currentTime)
+      }
+    }
+    if (isPlaying !== undefined) {
+      this.setData({
+        isPlaying
+      })
+    }
+    if (lyriStrArr) {
+      this.setData({
+        lyriStrArr
+      })
+    }
+    if (lyrIdx !== undefined) {
+      this.setData({
+        lyrIdx
+      })
+    }
+    if (currentLyr !== undefined) {
+      this.setData({
+        currentLyr
+      })
+    }
+    if (lyricScrollTop !== undefined) {
+      this.setData({
+        lyricScrollTop
+      })
+    }
+    if (playerIdx !== undefined) {
+      this.setData({
+        playerIdx
+      })
+    }
+    if (mode !== undefined) {
+      this.setData({
+        mode
+      })
+    }
+  },
+
+  onUnload() {
+    const {stateKeys} = this.data
+    playerListStore.offStates(stateKeys, this.watchPlayStore)
+  }
 })

@@ -1,13 +1,6 @@
 <wxs module="fmt" src="../../utils/format.wxs"></wxs>
 <view class="search">
-  <van-search
-    value="{{ value }}"
-    shape="round"
-    background="#fafafa"
-    placeholder="搜索你喜欢的音乐"
-    bind:click-input="onSearchClick"
-    disabled
-  />
+  <van-search value="{{ value }}" shape="round" background="#fafafa" placeholder="搜索你喜欢的音乐" bind:click-input="onSearchClick" disabled />
 </view>
 
 <swiper indicator-dots autoplay circular>
@@ -19,10 +12,10 @@
 </swiper>
 <van-skeleton row="6" loading="{{!songs.length}}" title>
   <view class="recom-song-list">
-      <area-header title="推荐歌曲" bind:handleClick="onRecomHandleClick" />
-      <block wx:for="{{songs}}" wx:key="id">
-        <video-recom isArrow videoItem="{{fmt.formatRecomItem(item)}}" data-index="{{index}}" bindtap="playerListTap" />
-      </block>
+    <area-header title="推荐歌曲" bind:handleClick="onRecomHandleClick" />
+    <block wx:for="{{songs}}" wx:key="id">
+      <video-recom isArrow videoItem="{{fmt.formatRecomItem(item)}}" data-index="{{index}}" bindtap="playerListTap" />
+    </block>
   </view>
 </van-skeleton>
 
@@ -30,6 +23,20 @@
 <song-area title="推荐歌单" songList="{{recomList}}"></song-area>
 
 <view class="peak-list">
-  <area-header title="巅峰榜" hasMore="{{false}}"/>
+  <area-header title="巅峰榜" hasMore="{{false}}" />
   <peak-area peakRankMap="{{peakRankMap}}" />
+</view>
+
+<view wx:if="{{songInfo.name}}" class="play-bar-container">
+  <view class="play-status"></view>
+  <view class="play-bar" bindtap="playBarTap">
+    <view class="left">
+      <image class="album" mode="widthFix" src="{{songInfo.al.picUrl}}" style="animation-play-state: {{isPlaying ? 'running' : 'paused'}}"></image>
+      <text class="song-name">{{songInfo.name}}</text>
+      <text class="lyr">{{currentLyr}}</text>
+    </view>
+    <view class="right">
+      <image class="icon" catchtap="pauseOrPlaytap" src="/assets/images/music/{{isPlaying ? 'pause' : 'play'}}_icon.png"></image>
+    </view>
+  </view>
 </view>

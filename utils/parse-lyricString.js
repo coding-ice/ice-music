@@ -13,7 +13,9 @@ function parseLyricString(lyrStr) {
     const time = min + sec + mill
     const text = lyr.replace(lyricReg, "")
 
-    lyricArr.push({time,text})
+    if (text.trim()) {
+      lyricArr.push({time,text})
+    }
   }
 
   return lyricArr
