@@ -46,10 +46,11 @@ Page({
     } = app.globalData
     this.setData({
       statusBarHeight,
-      innerHeight
+      innerHeight,
+      // sliderValue: 0,
+      songInfo: {}
     })
 
-    //TODO
     const updatedCurrentTimeThro = _.throttle(this.updateCurrentTime, 500, {
       leading: false,
       trailing: false
@@ -91,7 +92,8 @@ Page({
       }
       if (currentTime !== undefined) {
         if(!this.data.isSliderChangIng) {
-          updatedCurrentTimeThro()
+          this.setData({currentTime})
+          updatedCurrentTimeThro(currentTime)
         }
       }
       if (isPlaying !== undefined) {
@@ -109,7 +111,7 @@ Page({
           lyrIdx
         })
       }
-      if (currentLyr) {
+      if (currentLyr !== undefined) {
         this.setData({
           currentLyr
         })
@@ -119,7 +121,8 @@ Page({
           lyricScrollTop
         })
       }
-      if (playerIdx) {
+      if (playerIdx !== undefined) {
+        console.log(playerIdx)
         this.setData({
           playerIdx
         })
@@ -152,9 +155,8 @@ Page({
     })
   },
 
-  updateCurrentTime() {
-    const currentTime = AudioContext.currentTime * 1000
-    const sliderValue = (AudioContext.currentTime * 1000 / this.data.songInfo.dt) * 100
+  updateCurrentTime(currentTime) {
+    const sliderValue = (currentTime / this.data.songInfo.dt) * 100
     this.setData({
       currentTime,
       sliderValue
@@ -224,55 +226,17 @@ Page({
   },
 
   btnHandlePrevTap() {
-    this.handlePrevOrNext(false)
+    this.setData({sliderValue: 0, currentTime: 0, currentLyr: ''})
+    playerListStore.dispatch('handlePrevOrNext', false)
   },
 
   btnHandleNextTap() {
-    this.handlePrevOrNext()
-  },
-
-  handlePrevOrNext(isNext = true) {
-    let {
-      playerIdx,
-      playerSongs,
-      mode
-    } = this.data
-    const playerIen = playerSongs.length
-
-    switch (mode) {
-      case 0:
-        isNext ? playerIdx++ : playerIdx--
-        if (playerIdx === -1) playerIdx = playerIen - 1
-        if (playerIdx === playerIen) playerIdx = 0
-        break;
-      case 1:
-        playerIdx = Math.floor(Math.random() * playerSongs.length)
-        //如果随机重复则一直随机
-        while (playerIdx === this.data.playerIdx) {
-          playerIdx = Math.floor(Math.random() * playerSongs.length)
-        }
-        break;
-      case 2:
-        break;
-    }
-
-    this.setUpMusicPlayer(playerSongs[playerIdx].id)
-    this.setData({
-      playerIdx
-    })
+    this.setData({sliderValue: 0, currentTime: 0, currentLyr: ''})
+    playerListStore.dispatch('handlePrevOrNext', true)
   },
 
   changeModeTap() {
-    let {
-      mode,
-      modeIcons
-    } = this.data
-    mode++
-    if (mode === modeIcons.length) mode = 0
-
-    this.setData({
-      mode
-    })
+    playerListStore.dispatch('changeModeTap')
   },
 
   showSongsTap() {
@@ -296,9 +260,11 @@ Page({
     } = this.data
 
     this.setData({
-      playerIdx: index
+      playerIdx:index,
+      sliderValue: 0
     })
-    this.setUpMusicPlayer(playerSongs[index].id)
+
+    playerListStore.dispatch('setUpMusicPlayer', playerSongs[index].id, index)
     this.onClose()
   },
 })

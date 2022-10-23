@@ -26,19 +26,26 @@ export const playerListStore = new HYEventStore({
   },
 
   actions: {
-    //初始化音乐播放器
-    setUpMusicPlayer(ctx, id) {
-      //1. 初始化state
+    //初始化State
+    initState(ctx) {
       ctx.currentTime = 0
       ctx.songInfo = {}
       ctx.isPlaying = true
       ctx.lyriStrArr = []
       ctx.currentLyr = ''
-
+    },
+    //初始化音乐播放器
+    setUpMusicPlayer(ctx, id, playerIdx = -1) {
+      //1. 初始化数据
+      this.dispatch('initState')
       //2. 发送网络请求
       this.dispatch("getSongDetailAction", id)
       this.dispatch("getSongLyricAction", id)
 
+      if(playerIdx !== -1) {
+        ctx.playerIdx = playerIdx
+      }
+      
       AudioContext.stop()
       AudioContext.autoplay = true
       AudioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
@@ -80,10 +87,52 @@ export const playerListStore = new HYEventStore({
         })
 
         AudioContext.onEnded(() => {
-          this.handlePrevOrNext()
+          this.dispatch('handlePrevOrNext')
         })
       }
 
+    },
+
+    //其他按钮的逻辑
+    handlePrevOrNext(ctx, isNext = true) {
+      this.dispatch('initState')
+      let {
+        playerIdx,
+        playerSongs,
+        mode
+      } = ctx
+
+      const playerIen = playerSongs.length
+      switch (mode) {
+        case 0:
+          isNext ? playerIdx++ : playerIdx--
+          if (playerIdx === -1) playerIdx = playerIen - 1
+          if (playerIdx === playerIen) playerIdx = 0
+          break;
+        case 1:
+          playerIdx = Math.floor(Math.random() * playerIen)
+          //如果随机重复则一直随机
+          while (playerIdx === ctx.playerIdx) {
+            playerIdx = Math.floor(Math.random() * playerIen)
+          }
+          break;
+        case 2:
+          break;
+      }
+      this.dispatch("setUpMusicPlayer", playerSongs[playerIdx].id)
+      ctx.playerIdx = playerIdx
+    },
+
+    //改变播放模式
+    changeModeTap(ctx) {
+      let {
+        mode,
+        modeIcons
+      } = ctx
+      mode++
+      if (mode === modeIcons.length) mode = 0
+  
+      ctx.mode = mode
     },
 
     // 网络请求

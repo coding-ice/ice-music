@@ -55,17 +55,10 @@
   </view>
 </view>
 
-<van-popup
-  show="{{ showPopup }}"
-  round
-  closeable
-  position="bottom"
-  custom-style="height: 40%;padding-left:40rpx"
-  bind:close="onClose"
->
+<van-popup show="{{ showPopup }}" round closeable position="bottom" custom-style="height: 40%;padding-left:40rpx" bind:close="onClose">
   <block wx:for="{{playerSongs}}" wx:key="id">
     <view class="song-dec {{playerIdx === index ? 'active' : ''}}" data-index="{{index}}" bindtap="handlePopupItemTap">
-      {{item.name}} <text class="author"> - {{item.ar[0].name}}</text>
+      {{item.name}} <text class="author"> - {{item.artists[0].name ? item.artists[0].name : item.ar[0].name }}</text>
     </view>
   </block>
 </van-popup>
