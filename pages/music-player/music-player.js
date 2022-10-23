@@ -1,4 +1,4 @@
-import _ from 'underscore'
+import _, { throttle } from 'underscore'
 import {playerListStore} from '../../store/index'
 
 import parseLyricString from '../../utils/parse-lyricString'
@@ -146,7 +146,7 @@ Page({
     this.setData({isSliderChangIng:false, currentTime, sliderValue:value})
   },
 
-  onSliderChanging(e) {
+  onSliderChanging: throttle(function(e) {
     this.data.isSliderChangIng = true
     const {dt} = this.data.songInfo
     const {value} = e.detail
@@ -154,7 +154,7 @@ Page({
 
     
     this.setData({currentTime})
-  },
+  }, 100),
 
   // 一些按钮的事件
   pauseOrPlaytap() {
