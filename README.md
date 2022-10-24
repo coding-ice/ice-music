@@ -27,7 +27,7 @@
 
 ### 1.3 文件夹目录
 
-├─assets `<br/>`
+├─assets <br/>
 │ └─images
 │ ├─icons
 │ │ arrow-left.png
@@ -196,3 +196,8 @@ parse-lyricString.js
 │ README.md
 │ sitemap.json
 │ yarn.lock
+
+<br/>
+
+
+<br/>
