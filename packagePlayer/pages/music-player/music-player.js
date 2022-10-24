@@ -4,7 +4,7 @@ import _, {
 import {
   playerListStore,
   AudioContext
-} from '../../store/index'
+} from '../../../store/index'
 
 const app = getApp()
 
@@ -137,9 +137,7 @@ Page({
 
   // 一些按钮的事件
   pauseOrPlaytap() {
-    // this.setData({
-    //   isSliderChangIng: false
-    // })
+    this.setData({ isSliderChangIng: false })
     playerListStore.dispatch('pauseOrPlaytap')
   },
 

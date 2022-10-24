@@ -13,7 +13,7 @@ Component({
     handleSongInfoTap() {
       const {id} = this.data.itemData
       wx.navigateTo({
-        url: `/pages/music-player/music-player?id=${id}`,
+        url: `/packagePlayer/pages/music-player/music-player?id=${id}`,
       })
     }
   }

@@ -1,4 +1,4 @@
-<wxs module="fmt" src="../../utils/format.wxs"></wxs>
+<wxs module="fmt" src="../../../utils/format.wxs"></wxs>
 <view class="music-player">
   <image mode="aspectFill" class="bg-img" src="{{songInfo.al.picUrl}}"></image>
   <view class="mask"></view>
@@ -35,11 +35,11 @@
               </view>
             </view>
             <view class="btns">
-              <image class="btn btn-mode" src="/assets/images/player/play_{{modeIcons[mode]}}.png" bindtap="changeModeTap" />
-              <image class="btn btn-prev" src="/assets/images/player/play_prev.png" bindtap="btnHandlePrevTap" />
-              <image class="btn btn-play" src="/assets/images/player/play_{{isPlaying ? 'pause' : 'resume'}}.png" bindtap="pauseOrPlaytap" />
-              <image class="btn btn-next" src="/assets/images/player/play_next.png" bindtap="btnHandleNextTap" />
-              <image class="btn btn-music" src="/assets/images/player/play_music.png" bindtap="showSongsTap" />
+              <image class="btn btn-mode" src="../../assets/images/player/play_{{modeIcons[mode]}}.png" bindtap="changeModeTap" />
+              <image class="btn btn-prev" src="../../assets/images/player/play_prev.png" bindtap="btnHandlePrevTap" />
+              <image class="btn btn-play" src="../../assets/images/player/play_{{isPlaying ? 'pause' : 'resume'}}.png" bindtap="pauseOrPlaytap" />
+              <image class="btn btn-next" src="../../assets/images/player/play_next.png" bindtap="btnHandleNextTap" />
+              <image class="btn btn-music" src="../../assets/images/player/play_music.png" bindtap="showSongsTap" />
             </view>
           </view>
         </view>

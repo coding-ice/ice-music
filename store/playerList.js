@@ -47,10 +47,10 @@ export const playerListStore = new HYEventStore({
       if(playerIdx !== -1) {
         ctx.playerIdx = playerIdx
       }
-      
+
+      AudioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
       AudioContext.stop()
       AudioContext.autoplay = true
-      AudioContext.src = `https://music.163.com/song/media/outer/url?id=${id}.mp3`
 
       if (!ctx.isinitPlayer) {
         ctx.isinitPlayer = true
