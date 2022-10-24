@@ -27,7 +27,7 @@
 
 ### 1.3 文件夹目录
 
-├─assets
+├─assets `<br/>`
 │ └─images
 │ ├─icons
 │ │ arrow-left.png
@@ -187,7 +187,6 @@ format.wxs
 parse-lyricString.js
 │ .eslintrc.js
 │ .gitignore
-│ 1.txt
 │ app.js
 │ app.json
 │ app.wxss
