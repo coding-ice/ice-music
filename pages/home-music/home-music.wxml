@@ -10,7 +10,7 @@
     </swiper-item>
   </block>
 </swiper>
-<van-skeleton row="6" loading="{{!songs.length}}" title>
+<van-skeleton row="1" loading="{{!songs.length}}" title>
   <view class="recom-song-list">
     <area-header title="推荐歌曲" bind:handleClick="onRecomHandleClick" />
     <block wx:for="{{songs}}" wx:key="id">
